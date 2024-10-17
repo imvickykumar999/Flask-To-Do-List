@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        /* Shared CSS Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+            display: flex;
+            justify-content: center;  /* Center content horizontally */
+            align-items: center;      /* Center content vertically */
+            height: 100vh;            /* Full viewport height */
+        }
+
+        .container {
+            max-width: 400px;
+            width: 100%;              /* Ensure container takes up the full width */
+            margin: 0 auto;           /* Center container */
+            padding: 30px 20px;       /* Add padding for a cleaner look */
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+            text-align: center;       /* Center text and elements within container */
+        }
+
+        body.dark {
+            background-color: #121212;
+            color: #fff;
+        }
+
+        body.dark .container {
+            background-color: #333;
+            color: #fff;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .container h1 {
+            text-align: center;
+            color: inherit;
+            margin-bottom: 20px;
+        }
+
+        .container label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .container input {
+            width: 90%;               /* Make inputs take up almost the full width */
+            margin: 10px auto;        /* Add margin to space them out */
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark .container input {
+            background-color: #555;
+            color: #fff;
+            border: 1px solid #888;
+        }
+
+        .container button {
+            width: 90%;               /* Make button width consistent with inputs */
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .container button:hover {
+            background-color: #45a049;
+        }
+
+        .container .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .container .login-link a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .container .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        .container .error {
+            color: red;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        /* Dark Mode Toggle Button */
+        #dark_mode_toggle {
+            position: fixed;
+            top: 5px;
+            right: 20px;
+            padding: 10px;
+            background-color: transparent;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #4CAF50;
+        }
+
+        #dark_mode_toggle:hover {
+            color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <!-- Dark Mode Toggle Button -->
+    <button id="dark_mode_toggle" onclick="toggleDarkMode()">☀</button> <!-- Sun Icon by default -->
+
+    <!-- Registration Form Container -->
+    <div class="container">
+        <h1>Register</h1>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        <form method="POST">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" required>
+
+            <br><br>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required>
+
+            <br><br>
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" name="confirm_password" id="confirm_password" required>
+
+            <br><br>
+            <button type="submit">Register</button>
+        </form>
+        <div class="login-link">
+            Already have an account? <a href="{{ url_for('login') }}">Login here</a>
+        </div>
+    </div>
+
+    <script>
+        // Dark mode toggle
+        function toggleDarkMode() {
+            const body = document.body;
+            const toggleButton = document.getElementById('dark_mode_toggle');
+
+            body.classList.toggle('dark');
+
+            const isDarkMode = body.classList.contains('dark');
+            toggleButton.innerHTML = isDarkMode ? '&#9790;' : '&#9728;';  // Moon (dark mode) / Sun (light mode)
+
+            // Store the user's preference in localStorage
+            localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+        }
+
+        // Check if dark mode was previously enabled
+        window.onload = function() {
+            const toggleButton = document.getElementById('dark_mode_toggle');
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark');
+                toggleButton.innerHTML = '&#9790;'; // Moon icon if dark mode is enabled
+            }
+        }
+    </script>
+</body>
+</html>
+
