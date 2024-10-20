@@ -1,0 +1,187 @@
+/* Basic reset to remove default padding/margin */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+/* Header styling */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* Styling the form section */
+#item-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#new-item {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+#create-item {
+    padding: 10px 20px;
+    background-color: #3498db;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#create-item:hover {
+    background-color: #2980b9;
+}
+
+/* Styling the item list */
+#item-list {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 400px;
+}
+
+#item-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#item-list li input[type="text"] {
+    border: 1px solid #ddd;
+    padding: 5px;
+    width: 70%;
+    font-size: 14px;
+    border-radius: 3px;
+    margin-right: 10px; /* Adds space between input and Update button */
+}
+
+#item-list button {
+    padding: 5px 10px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+/* Styling the Update and Delete buttons */
+.update-item {
+    background-color: #27ae60;
+    color: white;
+    margin-right: 10px; /* Adds spacing between Update and Delete buttons */
+}
+
+.update-item:hover {
+    background-color: #2ecc71;
+}
+
+.delete-item {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.delete-item:hover {
+    background-color: #c0392b;
+}
+
+#banner-container {
+    text-align: center;
+    margin-bottom: 20px; /* Space between banner and input field */
+}
+
+#banner-image {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Additional styling for the form */
+#item-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#new-item {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+#create-item {
+    padding: 10px 20px;
+    background-color: #3498db;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 600px) {
+    #item-form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #new-item {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #create-item {
+        width: 100%;
+    }
+
+    #item-list {
+        max-width: 100%;
+    }
+
+    #item-list li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #item-list li input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #item-list button {
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    /* Stacking buttons for mobile */
+    #item-list .update-item, 
+    #item-list .delete-item {
+        margin-right: 0;
+        margin-bottom: 5px;
+        width: 100%;
+    }
+}
