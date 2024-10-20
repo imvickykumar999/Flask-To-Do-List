@@ -44,8 +44,7 @@ class Item(db.Model):
     name = db.Column(db.String(100), nullable=False)
 
 # Create the database before the first request
-@app.before_first_request
-def create_tables():
+with app.app_context():
     db.create_all()
 
 # Home route to render HTML
